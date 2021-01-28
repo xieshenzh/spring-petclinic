@@ -1,6 +1,15 @@
 # Spring Pet Clinic and OpenShift
 
-## Localhost Development
+This repo contains a container-ready implementation of the iconic Spring Petclinic application. Specifically, this code is useful with the OpenShift Source-to-Image (s2i) technology.
+
+There are two implementations available:
+1. Localhost, using the docker runtime and the local machine  
+1. OpenShift, using an OpenShift cluster
+## Localhost Implementation
+
+### Prerequisite
+
+Download or clone this repo to your local machine and move into the resulting directory.
 
 ```
 mvn package
@@ -56,7 +65,7 @@ The GUI results with "Burr" as an owner when connected to MySQL
 ![Screenshot](images/1-screenshot.png)
 
 
-## OpenShift Development
+## OpenShift Implementation
 *Note: You can get free access to Developer Sandbox for Red Hat OpenShift to implement this project. Simply browse to the following web page to get started: https://developers.redhat.com/developer-sandbox.*
 
 Create a new OpenShift `Project` with `spring-petclinic` name.
@@ -101,7 +110,7 @@ In a production system, you will most likely be using a permanent MySQL instance
 
 Click the `+Add` button and choose `From Git` type:
 
-Fill the git repo with the following value `https://github.com/burrsutter/spring-petclinic` and select the project as Java project:
+Fill the git repo with the following value `https://github.com/redhat-developer-demos/spring-petclinic` and select the project as Java project:
 
 ![Pet Clinic Deploy](images/7-petclinic-deploy.png)
 
