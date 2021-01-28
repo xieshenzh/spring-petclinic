@@ -66,7 +66,7 @@ The GUI results with "Burr" as an owner when connected to MySQL
 
 
 ## OpenShift Implementation
-*Note: You can get free access to Developer Sandbox for Red Hat OpenShift to implement this project. Simply browse to the following web page to get started: https://developers.redhat.com/developer-sandbox.*
+*Note: You can get free access to Developer Sandbox for Red Hat OpenShift to implement this project. Simply browse to the following web page to get started: https://developers.redhat.com/sandbox-java-deployment*
 
 Create a new OpenShift `Project` with `spring-petclinic` name.
 
@@ -155,3 +155,4 @@ select * from owners;
 ```
 
 ![MySQL Terminal](images/13-mysql-terminal-2.png)
+`### End ###`
