@@ -1,87 +1,14 @@
-# Spring Pet Clinic and OpenShift
+# Spring Pet Clinic and the Developer Sandbox for Red Hat OpenShift
 
-This repo contains a container-ready implementation of the iconic Spring Petclinic application. Specifically, this code is useful with the OpenShift Source-to-Image (s2i) technology.
-
-There are two implementations available:
-1. Localhost, using the docker runtime and the local machine  
-1. OpenShift, using an OpenShift cluster
-## Localhost Implementation
-
-### Prerequisite
-
-Download or clone this repo to your local machine and move into the resulting directory.
-
-```
-mvn package
-
-docker-compose up
-
-java -Dspring.profiles.active=mysql -jar target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar 
-
-docker exec -it spring-petclinic_mysql_1 mysql -upetclinic -ppetclinic
-
-show databases;
-use petclinic;
-show tables;
-
-+---------------------+
-| Tables_in_petclinic |
-+---------------------+
-| owners              |
-| pets                |
-| specialties         |
-| types               |
-| vet_specialties     |
-| vets                |
-| visits              |
-+---------------------+
-7 rows in set (0.00 sec)
-
-select * from petclinic.owners;
-+----+------------+-----------+-----------------------+-------------+------------+
-| id | first_name | last_name | address               | city        | telephone  |
-+----+------------+-----------+-----------------------+-------------+------------+
-|  1 | George     | Franklin  | 110 W. Liberty St.    | Madison     | 6085551023 |
-|  2 | Betty      | Davis     | 638 Cardinal Ave.     | Sun Prairie | 6085551749 |
-|  3 | Eduardo    | Rodriquez | 2693 Commerce St.     | McFarland   | 6085558763 |
-|  4 | Harold     | Davis     | 563 Friendly St.      | Windsor     | 6085553198 |
-|  5 | Peter      | McTavish  | 2387 S. Fair Way      | Madison     | 6085552765 |
-|  6 | Jean       | Coleman   | 105 N. Lake St.       | Monona      | 6085552654 |
-|  7 | Jeff       | Black     | 1450 Oak Blvd.        | Monona      | 6085555387 |
-|  8 | Maria      | Escobito  | 345 Maple St.         | Madison     | 6085557683 |
-|  9 | David      | Schroeder | 2749 Blackhawk Trail  | Madison     | 6085559435 |
-| 10 | Carlos     | Estaban   | 2335 Independence La. | Waunakee    | 6085555487 |
-| 11 | Burr       | Sutter    | 123 ABC Lane          | Wonderland  | 5555555555 |
-+----+------------+-----------+-----------------------+-------------+------------+
-11 rows in set (0.00 sec)
-
-
-open http://localhost:8080
-
-```
-
-The GUI results with "Burr" as an owner when connected to MySQL
-
-![Screenshot](images/1-screenshot.png)
-
+This repo contains a container-ready implementation of the iconic Spring Petclinic application. Specifically, this code is useful with the OpenShift Source-to-Image (s2i) technology and is part of the introductory material for [Developer Sandbox for Red Hat OpenShift](https://developers.rehat.com/developer-sandbox).
 
 ## OpenShift Implementation
-*Note: You can get free access to Developer Sandbox for Red Hat OpenShift to implement this project. Simply browse to the following web page to get started: https://developers.redhat.com/sandbox-java-deployment*
+Get your *free*  OpenShift cluster to run this demo. You can get free access to Developer Sandbox for Red Hat OpenShift at: https://developers.redhat.com/developer-sandbox
 
-Create a new OpenShift `Project` with `spring-petclinic` name.
-
-### Note:
-<hr>  
-This step is optional and is not available when using the Developer Sandbox for Red Hat OpenShift. It will not affect the outcome of this project.  
-
-The advantage of creating a separate project is that it is easier to tear down later. You simply delete the project. Otherwise, removing this project requires you to delete a Deployment, secrets, and other objects.
-<hr>  
-
-![Create Project](images/2-create-project.png)
 
 ### Dev Console
 
-Then move to Developer perspective:
+Make sure you are in the Developer perspective:
 
 ![Dev Perspective](images/3-switch-perspective.png)
 
