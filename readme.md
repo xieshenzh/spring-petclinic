@@ -1,6 +1,8 @@
 # Spring Pet Clinic and the Developer Sandbox for Red Hat OpenShift
 
-This repo contains a container-ready implementation of the iconic Spring Petclinic application. Specifically, this code is useful with the OpenShift Source-to-Image (s2i) technology and is part of the introductory material for [Developer Sandbox for Red Hat OpenShift](https://developers.rehat.com/developer-sandbox).
+This Github page contains the instruction for [the associated Github repo](https://github.com/redhat-developer-demos/spring-petclinic).
+
+The [associated repo](https://github.com/redhat-developer-demos/spring-petclinic) contains a container-ready implementation of the iconic Spring Petclinic application. Specifically, this code is useful with the OpenShift Source-to-Image (s2i) technology and is part of the introductory material for [Developer Sandbox for Red Hat OpenShift](https://developers.rehat.com/developer-sandbox).
 
 ## OpenShift Implementation
 Get your *free*  OpenShift cluster to run this demo. You can get free access to Developer Sandbox for Red Hat OpenShift at: https://developers.redhat.com/developer-sandbox
