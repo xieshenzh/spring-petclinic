@@ -62,9 +62,13 @@ Create a database instance with name `spring-petclinic-instance`.
 
 ![Create Instance](images/10-create-instance.png)
 
-Then select the instance just created and Connect.
+Then select the instance just created.
 
 ![Create Connection](images/11-create-connection.png)
+
+Scroll to the bottom of the instance list and Connect.
+
+![Create Connection](images/22-connect.png)
 
 In the Topology view, a connection to the database instance is created.
 
