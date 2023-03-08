@@ -47,8 +47,8 @@ jobs:
           crda: "latest"
 
       - name: CRDA Scan
-        id: scan
-        uses: ./
+        id: crda_scan
+        uses: redhat-actions/crda@v1
         with:
           manifest_directory: ${{ env.PROJECT_DIR }}
           manifest_file: ${{ matrix.manifest_file }}
