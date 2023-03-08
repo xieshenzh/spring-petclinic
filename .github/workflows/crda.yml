@@ -43,11 +43,8 @@ jobs:
         id: crda_scan
         uses: redhat-actions/crda@v1
         with:
-          manifest_file: ${{ matrix.manifest_file }}
           crda_key: ${{ secrets.CRDA_KEY }}
           snyk_token: ${{ secrets.SNYK_TOKEN }}
-          analysis_report_name: java
-          fail_on: never
 
       - name: Print Report Link
         run: echo ${{ steps.crda_scan.outputs.report_link }}
