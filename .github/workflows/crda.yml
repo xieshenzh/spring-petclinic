@@ -1,0 +1,53 @@
+name: Scan Java project
+on:
+  pull_request:
+    branches:
+    - main
+    - spring-main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Analyse Java project
+    steps:
+      - name: Checkout action
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: temurin
+          java-version: 11
+          cache: maven
+
+      - name: Install CRDA
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          source: github
+          github_pat: ${{ github.token }}
+          crda: "latest"
+
+      - name: CRDA Scan
+        id: scan
+        uses: ./
+        with:
+          manifest_directory: ${{ env.PROJECT_DIR }}
+          manifest_file: "pom.xml"
+          crda_key: ${{ secrets.CRDA_KEY }}
+          # snyk_token: ${{ secrets.SNYK_TOKEN }}
+          analysis_report_name: java
+          fail_on: never
+
+      - name: Print JSON analysis report
+        if: ${{ always() && steps.scan.outputs.crda_report_json }}
+        run: cat ${{ steps.scan.outputs.crda_report_json }}
+
+      - name: Print SARIF analysis report
+        if: ${{ always() && steps.scan.outputs.crda_report_sarif }}
+        run: cat ${{ steps.scan.outputs.crda_report_sarif }}
+
+      - name: Print Report Link
+        run: echo ${{ steps.scan.outputs.report_link }}
+
+      - name: Print Artifact Name
+        run: echo ${{ steps.scan.outputs.artifact_name }}
