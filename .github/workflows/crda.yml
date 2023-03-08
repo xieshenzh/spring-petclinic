@@ -43,23 +43,11 @@ jobs:
         id: crda_scan
         uses: redhat-actions/crda@v1
         with:
-          manifest_directory: "."
           manifest_file: ${{ matrix.manifest_file }}
           crda_key: ${{ secrets.CRDA_KEY }}
-          # snyk_token: ${{ secrets.SNYK_TOKEN }}
+          snyk_token: ${{ secrets.SNYK_TOKEN }}
           analysis_report_name: java
           fail_on: never
 
-      - name: Print JSON analysis report
-        if: ${{ always() && steps.scan.outputs.crda_report_json }}
-        run: cat ${{ steps.scan.outputs.crda_report_json }}
-
-      - name: Print SARIF analysis report
-        if: ${{ always() && steps.scan.outputs.crda_report_sarif }}
-        run: cat ${{ steps.scan.outputs.crda_report_sarif }}
-
       - name: Print Report Link
-        run: echo ${{ steps.scan.outputs.report_link }}
-
-      - name: Print Artifact Name
-        run: echo ${{ steps.scan.outputs.artifact_name }}
+        run: echo ${{ steps.crda_scan.outputs.report_link }}
