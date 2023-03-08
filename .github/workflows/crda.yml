@@ -25,13 +25,6 @@ jobs:
       - name: Checkout action
         uses: actions/checkout@v2
 
-      - name: Clone ${{ env.PROJECT_DIR }}
-        run: |
-          git clone --single-branch --branch crda-modification --depth 1 https://github.com/redhat-actions/${{ env.PROJECT_DIR }}.git
-      # pom.xml must be in working directory when setup-java is run
-      - name: Copy pom.xml to working directory
-        run: cp ${{ env.PROJECT_DIR }}/pom.xml .
-
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
