@@ -43,7 +43,7 @@ jobs:
         id: crda_scan
         uses: redhat-actions/crda@v1
         with:
-          manifest_directory: ${{ env.PROJECT_DIR }}
+          manifest_directory: "."
           manifest_file: ${{ matrix.manifest_file }}
           crda_key: ${{ secrets.CRDA_KEY }}
           # snyk_token: ${{ secrets.SNYK_TOKEN }}
