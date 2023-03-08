@@ -5,13 +5,32 @@ on:
     - main
     - spring-main
 
+env:
+  PROJECT_DIR: spring-petclinic
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ "ubuntu-20.04" ]
+        # Test once with explicit manifest_file, and once without
+        manifest_file: [ "pom.xml" ]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     name: Analyse Java project
     steps:
       - name: Checkout action
         uses: actions/checkout@v2
+
+      - name: Clone ${{ env.PROJECT_DIR }}
+        run: |
+          git clone --single-branch --branch crda-modification --depth 1 https://github.com/redhat-actions/${{ env.PROJECT_DIR }}.git
+      # pom.xml must be in working directory when setup-java is run
+      - name: Copy pom.xml to working directory
+        run: cp ${{ env.PROJECT_DIR }}/pom.xml .
 
       - name: Setup Java
         uses: actions/setup-java@v2
@@ -31,8 +50,8 @@ jobs:
         id: scan
         uses: ./
         with:
-          manifest_directory: "."
-          manifest_file: "pom.xml"
+          manifest_directory: ${{ env.PROJECT_DIR }}
+          manifest_file: ${{ matrix.manifest_file }}
           crda_key: ${{ secrets.CRDA_KEY }}
           # snyk_token: ${{ secrets.SNYK_TOKEN }}
           analysis_report_name: java
