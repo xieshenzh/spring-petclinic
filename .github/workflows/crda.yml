@@ -2,12 +2,12 @@ name: Scan Java project
 on:
    pull_request_target:
     types:
-      - opened
-      - edited
-      - reopened
-      - synchronize
-      - converted_to_draft
-      - ready_for_review
+    - opened
+    - edited
+    - reopened
+    - synchronize
+    - converted_to_draft
+    - ready_for_review
     branches:
     - main
     - spring-main
