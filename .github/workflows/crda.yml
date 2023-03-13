@@ -3,9 +3,15 @@ on:
    pull_request_target:
     types:
       - opened
+      - edited
+      - reopened
+      - synchronize
+      - converted_to_draft
+      - ready_for_review
     branches:
     - main
     - spring-main
+    - rhoda
 
 env:
   PROJECT_DIR: spring-petclinic
