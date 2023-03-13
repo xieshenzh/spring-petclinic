@@ -12,6 +12,7 @@ on:
     - main
     - spring-main
     - rhoda
+    - crda-test
 
 env:
   PROJECT_DIR: spring-petclinic
