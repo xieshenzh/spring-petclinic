@@ -1,6 +1,9 @@
 name: Scan Java project
 on:
-  pull_request:
+   pull_request_target:
+    types:
+    - opened
+    - edited
     branches:
     - main
     - spring-main
