@@ -4,6 +4,7 @@ on:
     branches:
     - main
     - spring-main
+    - crda-test
 
 env:
   PROJECT_DIR: spring-petclinic
