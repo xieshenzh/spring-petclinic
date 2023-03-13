@@ -4,9 +4,14 @@ on:
     types:
     - opened
     - edited
+    - reopened
+    - synchronize
+    - converted_to_draft
+    - ready_for_review
     branches:
     - main
     - spring-main
+    - rhoda
     - crda-test
 
 env:
